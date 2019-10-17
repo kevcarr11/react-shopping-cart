@@ -20,7 +20,8 @@ const ShoppingCart = () => {
 				<Item key={index}
 				{...item}
 				removeItem={removeItem}
-				itemId={item.id} />
+				itemId={item.id}
+				 />
 			))}
 
 			<div className="shopping-cart__checkout">

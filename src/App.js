@@ -11,6 +11,7 @@ import ShoppingCart from './components/ShoppingCart';
 function App() {
 	const [products] = useState(data);
 	const [cart, setCart] = useState([]);
+
 	console.log('cart', cart)
 
 	const addItem = item => {
@@ -18,9 +19,13 @@ function App() {
 		id: Date.now(),
 		image: item.image,
 		price: item.price,
-		title: item.title
+		title: item.title,
 	}
+	localStorage.setItem('myCart', JSON.stringify(cart))
+	setCart(JSON.parse(localStorage.getItem('myCart')))
+	
 	setCart([newItem, ...cart ])
+	
 };
 
 	const removeItem = (itemId) => {
@@ -30,7 +35,7 @@ function App() {
 
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
-			<CartContext.Provider value={{cart, removeItem }}>
+			<CartContext.Provider value={{cart, removeItem}}>
 				<div className="App">
 					<Navigation cart={cart} />
 
