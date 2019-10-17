@@ -21,9 +21,7 @@ function App() {
 		title: item.title
 	}
 
-	setCart({
-		products: [...products, newItem]
-	})
+	setCart([newItem, ...cart ])
 };
 
 	return (
